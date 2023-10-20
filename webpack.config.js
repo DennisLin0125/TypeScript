@@ -7,12 +7,38 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
         clean: true,
+        // 禁用箭頭函數
+        environment: {
+            arrowFunction: false
+        },
     },
     module: {
         rules: [
             {
                 test: /\.ts$/,
-                use: 'ts-loader',
+                use: [
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            presets: [
+                                [
+                                    "@babel/preset-env",
+                                    {
+                                        targets: {
+                                            "chrome": "88",
+                                            // "ie": "11"
+                                        },
+                                        // 指定版本 增加兼容性
+                                        "corejs": "3",
+                                        // 按需使用
+                                        "useBuiltIns": "usage"
+                                    }
+                                ]
+                            ]
+                        }
+                    },
+                    'ts-loader'
+                ],
                 exclude: /node_modules/,
             }
         ]
@@ -26,6 +52,6 @@ module.exports = {
         }),
     ],
     resolve: {
-        extensions: ['.ts','.js']
+        extensions: ['.ts', '.js']
     }
 }
