@@ -12,3 +12,11 @@ let foo: (a: number, b: number) => number
 foo = function (n1: number, n2: number) {
     return n1 + n2
 }
+
+// 表示字串arr
+let strArr: string[]
+strArr = ['b', 'a']
+
+// 表示字串arr
+let numArr: number[]
+numArr = [2, 1]

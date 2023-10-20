@@ -9,3 +9,9 @@ let foo;
 foo = function (n1, n2) {
     return n1 + n2;
 };
+// 表示字串arr
+let strArr;
+strArr = ['b', 'a'];
+// 表示字串arr
+let numArr;
+numArr = [2, 1];
