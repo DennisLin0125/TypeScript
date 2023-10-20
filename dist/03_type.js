@@ -15,3 +15,24 @@ strArr = ['b', 'a'];
 // 表示字串arr
 let numArr;
 numArr = [2, 1];
+// 表示元組arr
+let tuArr;
+tuArr = [2, 1];
+// enum
+var Gender;
+(function (Gender) {
+    Gender[Gender["Male"] = 0] = "Male";
+    Gender[Gender["Female"] = 1] = "Female";
+})(Gender || (Gender = {}));
+let data;
+data = {
+    name: 'dennis',
+    gender: Gender.Male
+};
+console.log(data.gender === Gender.Male);
+// & 同時
+let o;
+o = { name: 'xxx', age: 15 };
+let k;
+let j1;
+let p;
