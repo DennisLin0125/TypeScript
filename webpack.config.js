@@ -7,9 +7,10 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
         clean: true,
-        // 禁用箭頭函數
+        // 禁用箭頭函數,const
         environment: {
-            arrowFunction: false
+            arrowFunction: false,
+            const: false
         },
     },
     module: {
@@ -76,5 +77,11 @@ module.exports = {
     ],
     resolve: {
         extensions: ['.ts', '.js']
-    }
+    },
+    devServer: {
+        static: {
+            directory: path.join(__dirname, '/dist'),
+        },
+        open: ['index.html'],
+    },
 }
