@@ -17,7 +17,7 @@ export default class GameControl {
         // 創建實例
         this.snake = new Snake()
         this.food = new Food()
-        this.ScorePanel = new ScorePanel()
+        this.ScorePanel = new ScorePanel(10, 2)
     }
 
     /**
