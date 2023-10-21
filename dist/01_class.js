@@ -1,19 +1,28 @@
 "use strict";
-class Person {
-    constructor() {
-        /**
-         * 直接定義的屬性是實例對象的屬性,需要通過實例對象去訪問
-         */
-        this.name = 'dennis';
-        this.sayHello = (str) => console.log(str);
+// class Person {
+//     /**
+//      * 直接定義的屬性是實例對象的屬性,需要通過實例對象去訪問
+//      */
+//     name: string = 'dennis';
+//     /**
+//      * 使用static定義的是靜態屬性,只能透過class去訪問
+//      */
+//     static age: number = 19
+//     sayHello = (str: string) => console.log(str)
+// }
+// const p1 = new Person()
+// console.log(p1)
+// console.log(p1.name)
+// console.log(Person.age)
+// p1.sayHello('Hello DennisLin')
+class Dog {
+    constructor(name, age) {
+        this.bark = () => console.log('旺旺旺旺');
+        this.name = name;
+        this.age = age;
     }
 }
-/**
- * 使用static定義的是靜態屬性,只能透過class去訪問
- */
-Person.age = 19;
-const p1 = new Person();
-console.log(p1);
-console.log(p1.name);
-console.log(Person.age);
-p1.sayHello('Hello DennisLin');
+const dog1 = new Dog('小黑', 18);
+const dog2 = new Dog('小白', 20);
+console.log(dog1);
+console.log(dog2);

@@ -64,6 +64,25 @@ console.log(p1.name)
 console.log(Person.age)
 
 p1.sayHello('Hello DennisLin')
+```
 
+### 構造類
+```ts
+class Dog {
+    name: string
+    age: number
 
+    constructor(name: string, age: number) {
+        this.name = name
+        this.age = age
+    }
+
+    bark = () => console.log('旺旺旺旺')
+}
+
+const dog1 = new Dog('小黑', 18)
+const dog2 = new Dog('小白', 20)
+
+console.log(dog1)
+console.log(dog2)
 ```
