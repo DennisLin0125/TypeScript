@@ -29,9 +29,14 @@
 // console.log(dog1)
 // console.log(dog2)
 (function () {
+    /**
+     * abstract 開頭是抽象類
+     * 代表此類只能被繼承,不能被宣告成為實例對象
+     *
+     * 抽象類中可以貼家抽象方法
+     */
     class Animal {
         constructor(name, age) {
-            this.bark = (str) => console.log(str);
             this.name = name;
             this.age = age;
         }
@@ -39,16 +44,23 @@
     class Dog extends Animal {
         constructor() {
             super(...arguments);
+            // 子類必須重寫
+            this.bark = () => console.log(`旺旺`);
             this.run = () => console.log(`${this.name}在跑`);
         }
     }
     class Cat extends Animal {
+        constructor() {
+            super(...arguments);
+            // 子類必須重寫
+            this.bark = () => console.log(`喵喵`);
+        }
     }
     const dog = new Dog('小黑', 18);
     console.log(dog);
-    dog.bark('旺旺');
+    dog.bark();
     dog.run();
     const cat = new Cat('小花', 16);
     console.log(cat);
-    cat.bark('喵喵');
+    cat.bark();
 })();
