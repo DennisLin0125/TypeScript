@@ -86,3 +86,39 @@ const dog2 = new Dog('小白', 20)
 console.log(dog1)
 console.log(dog2)
 ```
+
+## 繼承類
+```ts
+(function () {
+
+    class Animal{
+        name: string
+        age: number
+
+        constructor(name: string, age: number) {
+            this.name = name
+            this.age = age
+        }
+
+        bark = (str:string) => console.log(str)
+    }
+
+    class Dog extends Animal{
+        run = () => console.log(`${this.name}在跑`)
+    }
+
+    class Cat extends Animal{
+
+    }
+
+    const dog = new Dog('小黑', 18)
+    console.log(dog)
+    dog.bark('旺旺')
+    dog.run()
+
+    const cat = new Cat('小花', 16)
+    console.log(cat)
+    cat.bark('喵喵')
+
+})();
+```
