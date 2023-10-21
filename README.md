@@ -289,3 +289,45 @@ console.log(dog2)
 
 })();
 ```
+
+## 屬性封裝
+```ts
+(function () {
+    class Person {
+        private _name: string
+        private _age: number
+
+        constructor(name: string, age: number) {
+            this._name = name
+            this._age = age
+        }
+
+        get name() {
+            return this._name
+        }
+
+        set name(value: string) {
+            this._name = value
+        }
+
+        get age() {
+            return this._age
+        }
+
+        set age(value: number) {
+            if (value < 0) {
+                alert('數據不合理')
+            } else {
+                this._age = value
+            }
+        }
+
+    }
+    const p = new Person('DennisLin', 18)
+    p.age = 100
+    p.name = '孫悟空'
+    console.log(p)
+    console.log(p.name)
+    console.log(p.age)
+})();
+```

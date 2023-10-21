@@ -66,25 +66,84 @@
 //     console.log(cat)
 //     cat.bark()
 // })();
+// (function () {
+//     // 描述一個物件
+//     type MyType = {
+//         name: string,
+//         age: number,
+//     };
+//     const obj1: MyType = {
+//         name: 'SSSS',
+//         age: 11,
+//     }
+//     /**
+//      * 定義一個介面
+//      * 用來定義一個類該有哪些屬性和方法
+//      * 同時也可以當類型去使用
+//      */
+//     interface MyInterface {
+//         name: string,
+//         age: number,
+//     }
+//     interface MyInterface {
+//         gender: string,
+//     }
+//     const obj2: MyInterface = {
+//         name: 'SSSS',
+//         age: 11,
+//         gender: '男'
+//     }
+//     // *****************************************
+//     /**
+//      * interface 可以在定義類時去限制類的結構
+//      * interface 內部的屬性不能有實際的值
+//      * interface 內部方法均為抽象方法
+//      */
+//     interface myDemo {
+//         name: string
+//         sayHello(): void
+//     }
+//     /**
+//      * 定義class時可以使class去實現一個interface
+//      */
+//     class Myclass implements myDemo {
+//         name: string;
+//         constructor(name: string) {
+//             this.name = name
+//         }
+//         sayHello = () => console.log(`${this.name},你好`)
+//     }
+//     const p = new Myclass("Dennis")
+//     p.sayHello()
+// })();
 (function () {
-    const obj1 = {
-        name: 'SSSS',
-        age: 11,
-    };
-    const obj2 = {
-        name: 'SSSS',
-        age: 11,
-        gender: '男'
-    };
-    /**
-     * 定義class時可以使class去實現一個interface
-     */
-    class Myclass {
-        constructor(name) {
-            this.sayHello = () => console.log(`${this.name},你好`);
-            this.name = name;
+    class Person {
+        constructor(name, age) {
+            this._name = name;
+            this._age = age;
+        }
+        get name() {
+            return this._name;
+        }
+        set name(value) {
+            this._name = value;
+        }
+        get age() {
+            return this._age;
+        }
+        set age(value) {
+            if (value < 0) {
+                alert('數據不合理');
+            }
+            else {
+                this._age = value;
+            }
         }
     }
-    const p = new Myclass("Dennis");
-    p.sayHello();
+    const p = new Person('DennisLin', 18);
+    p.age = 100;
+    p.name = '孫悟空';
+    console.log(p);
+    console.log(p.name);
+    console.log(p.age);
 })();
