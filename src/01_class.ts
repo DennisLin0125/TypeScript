@@ -40,51 +40,112 @@
 // console.log(dog2)
 
 
+// (function () {
+
+//     /**
+//      * abstract 開頭是抽象類
+//      * 代表此類只能被繼承,不能被宣告成為實例對象
+//      * 
+//      * 抽象類中可以貼家抽象方法
+//      */
+//     abstract class Animal{
+//         name: string
+//         age: number
+
+//         constructor(name: string, age: number) {
+//             this.name = name
+//             this.age = age
+//         }
+
+//         /**
+//          * 抽象方法
+//          * 抽象方法只能在抽象類中
+//          * 沒有方法體 子類必須重寫
+//          */
+//         abstract bark():void
+//     }
+
+//     class Dog extends Animal{
+//         // 子類必須重寫
+//         bark = () => console.log(`旺旺`)
+
+//         run = () => console.log(`${this.name}在跑`)
+//     }
+
+//     class Cat extends Animal{
+//         // 子類必須重寫
+//         bark = () => console.log(`喵喵`)
+//     }
+
+//     const dog = new Dog('小黑', 18)
+//     console.log(dog)
+//     dog.bark()
+//     dog.run()
+
+//     const cat = new Cat('小花', 16)
+//     console.log(cat)
+//     cat.bark()
+
+// })();
+
 (function () {
+    // 描述一個物件
+    type MyType = {
+        name: string,
+        age: number,
+    };
+
+    const obj1: MyType = {
+        name: 'SSSS',
+        age: 11,
+    }
 
     /**
-     * abstract 開頭是抽象類
-     * 代表此類只能被繼承,不能被宣告成為實例對象
-     * 
-     * 抽象類中可以貼家抽象方法
+     * 定義一個介面
+     * 用來定義一個類該有哪些屬性和方法
+     * 同時也可以當類型去使用
      */
-    abstract class Animal{
+    interface MyInterface {
+        name: string,
+        age: number,
+    }
+
+    interface MyInterface {
+        gender: string,
+    }
+
+    const obj2: MyInterface = {
+        name: 'SSSS',
+        age: 11,
+        gender: '男'
+    }
+
+    // *****************************************
+
+
+    /**
+     * interface 可以在定義類時去限制類的結構
+     * interface 內部的屬性不能有實際的值
+     * interface 內部方法均為抽象方法
+     */
+    interface myDemo {
         name: string
-        age: number
+        sayHello(): void
+    }
 
-        constructor(name: string, age: number) {
+    /**
+     * 定義class時可以使class去實現一個interface
+     */
+    class Myclass implements myDemo {
+        name: string;
+        constructor(name: string) {
             this.name = name
-            this.age = age
         }
-
-        /**
-         * 抽象方法
-         * 抽象方法只能在抽象類中
-         * 沒有方法體 子類必須重寫
-         */
-        abstract bark():void
+        sayHello = () => console.log(`${this.name},你好`)
     }
 
-    class Dog extends Animal{
-        // 子類必須重寫
-        bark = () => console.log(`旺旺`)
-
-        run = () => console.log(`${this.name}在跑`)
-    }
-
-    class Cat extends Animal{
-        // 子類必須重寫
-        bark = () => console.log(`喵喵`)
-    }
-
-    const dog = new Dog('小黑', 18)
-    console.log(dog)
-    dog.bark()
-    dog.run()
-
-    const cat = new Cat('小花', 16)
-    console.log(cat)
-    cat.bark()
+    const p = new Myclass("Dennis")
+    p.sayHello()
 
 })();
 

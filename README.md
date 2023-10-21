@@ -39,6 +39,58 @@ tsc XXX -w
 }
 ```
 
+## 基本使用
+```ts
+let test: 'bad' | 'good'
+
+test = 'bad'
+
+let c1: { name: string, age: number }
+c1 = { name: 'John', age: 30 }
+
+let d: { name: string, [propName: string]: any }
+d = { name: 'dennis', age: 18, gender: '男' }
+
+let foo: (a: number, b: number) => number
+foo = function (n1: number, n2: number) {
+    return n1 + n2
+}
+
+// 表示字串arr
+let strArr: string[]
+strArr = ['b', 'a']
+
+// 表示字串arr
+let numArr: number[]
+numArr = [2, 1]
+
+// 表示元組arr
+let tuArr: [number, number]
+tuArr = [2, 1]
+
+// enum
+enum Gender {
+    Male = 0,
+    Female = 1
+}
+let data: { name: string, gender: Gender }
+data = {
+    name: 'dennis',
+    gender: Gender.Male
+}
+console.log(data.gender === Gender.Male)
+
+// & 同時
+let o: { name: string } & { age: number }
+o = { name: 'xxx', age: 15 }
+
+// 類型的別名
+type myType = 1 | 2 | 3 | 4 | 5
+let k: myType
+let j1: myType
+let p: myType
+```
+
 
 ### 基本類
 ```ts
@@ -170,6 +222,70 @@ console.log(dog2)
     const cat = new Cat('小花', 16)
     console.log(cat)
     cat.bark()
+
+})();
+```
+
+## Interface
+```ts
+(function () {
+    // 描述一個物件
+    type MyType = {
+        name: string,
+        age: number,
+    };
+
+    const obj1: MyType = {
+        name: 'SSSS',
+        age: 11,
+    }
+
+    /**
+     * 定義一個介面
+     * 用來定義一個類該有哪些屬性和方法
+     * 同時也可以當類型去使用
+     */
+    interface MyInterface {
+        name: string,
+        age: number,
+    }
+
+    interface MyInterface {
+        gender: string,
+    }
+
+    const obj2: MyInterface = {
+        name: 'SSSS',
+        age: 11,
+        gender: '男'
+    }
+
+    // *****************************************
+
+
+    /**
+     * interface 可以在定義類時去限制類的結構
+     * interface 內部的屬性不能有實際的值
+     * interface 內部方法均為抽象方法
+     */
+    interface myDemo {
+        name: string
+        sayHello(): void
+    }
+
+    /**
+     * 定義class時可以使class去實現一個interface
+     */
+    class Myclass implements myDemo {
+        name: string;
+        constructor(name: string) {
+            this.name = name
+        }
+        sayHello = () => console.log(`${this.name},你好`)
+    }
+
+    const p = new Myclass("Dennis")
+    p.sayHello()
 
 })();
 ```
