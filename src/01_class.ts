@@ -149,42 +149,83 @@
 
 // })();
 
-(function () {
-    class Person {
-        private _name: string
-        private _age: number
+// (function () {
+//     class Person {
+//         private _name: string
+//         private _age: number
 
-        constructor(name: string, age: number) {
-            this._name = name
-            this._age = age
-        }
+//         constructor(name: string, age: number) {
+//             this._name = name
+//             this._age = age
+//         }
 
-        get name() {
-            return this._name
-        }
+//         get name() {
+//             return this._name
+//         }
 
-        set name(value: string) {
-            this._name = value
-        }
+//         set name(value: string) {
+//             this._name = value
+//         }
 
-        get age() {
-            return this._age
-        }
+//         get age() {
+//             return this._age
+//         }
 
-        set age(value: number) {
-            if (value < 0) {
-                alert('數據不合理')
-            } else {
-                this._age = value
-            }
-        }
+//         set age(value: number) {
+//             if (value < 0) {
+//                 alert('數據不合理')
+//             } else {
+//                 this._age = value
+//             }
+//         }
 
+//     }
+//     const p = new Person('DennisLin', 18)
+//     p.age = 100
+//     p.name = '孫悟空'
+//     console.log(p)
+//     console.log(p.name)
+//     console.log(p.age)
+// })();
+
+
+// 定義泛型1
+function fn<T>(a: T): T {
+    return a
+}
+
+// 可以直接調用具有泛型的函數
+let result = fn(10) // 不指定泛型 ,TS會自行推斷
+let result2 = fn<string>('Hello world') //指定泛型
+
+
+// 定義泛型2
+function fn2<T, K>(a: T, b: K): T {
+    console.log(b)
+    return a
+}
+
+fn2<number, string>(123, 'Hi 你好')
+
+// =======================================
+
+interface Inter {
+    length: number
+}
+
+function foo<T extends Inter>(a:T):number{
+    return a.length
+}
+
+console.log(foo('123'))
+
+//==================================
+
+class Demo<T>{
+    name: T
+    constructor(name: T){
+        this.name=name
     }
-    const p = new Person('DennisLin', 18)
-    p.age = 100
-    p.name = '孫悟空'
-    console.log(p)
-    console.log(p.name)
-    console.log(p.age)
-})();
+}
 
+const p = new Demo<string>('dennis')
