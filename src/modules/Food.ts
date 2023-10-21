@@ -13,7 +13,7 @@ export default class Food {
 
     // 獲取食物x軸方法
     get y() {
-        return this.element.offsetHeight
+        return this.element.offsetTop
     }
 
     // 修改食物的位置
