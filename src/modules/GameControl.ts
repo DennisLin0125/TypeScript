@@ -67,11 +67,32 @@ export default class GameControl {
                 break;
         }
 
-        // 修改蛇的x和y座標
-        this.snake.x = X
-        this.snake.y = Y
+        // 檢查蛇是否吃到了食物
+        if (this.checkEat(X, Y)) {
+            // 食物位置改變
+            this.food.change()
+            // 分數增加
+            this.ScorePanel.addScore()
+            // 蛇身體加一格
+            this.snake.addBody()
+        }
+
+        try {
+            // 修改蛇的x和y座標
+            this.snake.x = X
+            this.snake.y = Y
+        } catch (error: any) {
+            this.isLive = false
+            alert(error.message + ' Game Over !')
+        }
+
 
         // 開啟定時調用
         this.isLive && setTimeout(this.run, 300 - (this.ScorePanel.level - 1) * 30)
+    }
+
+    // 檢查蛇是否吃到食物
+    checkEat = (x: number, y: number) => {
+        return x === this.food.x && y === this.food.y
     }
 }
